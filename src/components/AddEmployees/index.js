@@ -23,7 +23,7 @@ const AddEmployees = () => {
         console.log('submitting employee details...')
 
         try {
-            const response = await axios.post(`${process.env.REACT_APP_BASE_URL}`, employeeDetails);  
+            const response = await axios.post("https://day-42-task-fullstack-demo-backend.onrender.com/api/employees", employeeDetails);  
             if (response) {
                 setEmployeeDetails({
                     name: '',
@@ -41,6 +41,7 @@ const AddEmployees = () => {
     }
     return (
         <div className='AddEmployees'>
+            <div className='card'>
             <h2>ADD EMPLOYEES</h2>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
@@ -67,6 +68,7 @@ const AddEmployees = () => {
                     <input className='btn btn-primary mt-2' type='submit' value='Create an Employee' />
                 </div>
             </form>
+            </div>
         </div>
     )
 };

@@ -17,7 +17,7 @@ const UpdateEmployees = () => {
         mobileNumber: ''
     });
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_BASE_URL}/${empID}`).then((response) => {
+        axios.get("https://day-42-task-fullstack-demo-backend.onrender.com/api/employees/"+`${empID}`).then((response) => {
             setEmployeeDetails(response.data);
         }).catch(error => {
             console.log('Error: ', error);
@@ -36,7 +36,7 @@ const UpdateEmployees = () => {
 
         console.log('Updating employee details...')
         try{
-            const response = await axios.put(`${process.env.REACT_APP_BASE_URL}/${empID}`, employeeDetails);
+            const response = await axios.put("https://day-42-task-fullstack-demo-backend.onrender.com/api/employees/"+`${empID}`, employeeDetails);
             if(response){
                 setEmployeeDetails({
                     name: '',
@@ -54,6 +54,7 @@ const UpdateEmployees = () => {
 
     return(
         <div className="UpdateEmployees">
+            <div className="card">
         <h2>EDIT EMPLOYEES</h2>
         <form onSubmit={handleSubmit}>
             <div className="form-group">
@@ -81,6 +82,7 @@ const UpdateEmployees = () => {
                     <input className='btn btn-primary mt-2' type='submit' text='Update employee' />
                 </div>
         </form>
+        </div>
         </div>
     )
 };

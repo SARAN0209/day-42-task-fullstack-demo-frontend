@@ -1,0 +1,10 @@
+*{margin: 0;padding: 0;
+box-sizing: border-box;}
+
+.Header{
+    width: 100%;
+    background-color: sandybrown;
+}
+.navbar-brand{color: white !important;}
+.nav-link{color: white !important;}
+.nav-link:hover{color: rgb(255,0,212) !important;}

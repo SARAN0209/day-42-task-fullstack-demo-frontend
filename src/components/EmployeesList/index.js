@@ -13,7 +13,7 @@ const EmployeeList = () => {
 
     const getEmployees = async () =>{
         try{
-            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}`);
+            const response = await axios.get("https://day-42-task-fullstack-demo-backend.onrender.com/api/employees");
             setEmployees(response.data)
         }catch(error){
             console.log('Error: ',error)
@@ -22,7 +22,7 @@ const EmployeeList = () => {
 
     const handleDelete = async (employeeID) =>{
             try{
-                const response = await axios.delete (`${process.env.REACT_APP_BASE_URL}/${employeeID}`)
+                const response = await axios.delete ("https://day-42-task-fullstack-demo-backend.onrender.com/api/employees/"+`${employeeID}`)
                 if(response){
                     getEmployees();
                 }
