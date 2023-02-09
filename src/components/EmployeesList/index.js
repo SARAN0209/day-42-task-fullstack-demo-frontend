@@ -39,6 +39,7 @@ const EmployeeList = () => {
             <table className="table table-striped">
                 <thead>
                     <tr>
+                        {/* <th>ID</th> */}
                         <th>NAME</th>
                         <th>EMAIL</th>
                         <th>ADDRESS</th>
@@ -49,6 +50,7 @@ const EmployeeList = () => {
                 <tbody>
                     {employees.length && employees.map((employee,index)=>(
                     <tr key={index}>
+                        {/* <td>{employee.id}</td> */}
                         <td>{employee.name}</td>
                         <td>{employee.email}</td>
                         <td>{employee.address}</td>

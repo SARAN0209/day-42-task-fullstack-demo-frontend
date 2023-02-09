@@ -14,7 +14,15 @@ const UpdateEmployees = () => {
         email: '',
         address: '',
         designation: '',
-        mobileNumber: ''
+        mobileNumber: '',
+        error :{
+             name: '',
+             email: '',
+             address: '',
+             designation: '',
+             mobileNumber: '',
+
+        },
     });
     useEffect(() => {
         axios.get("https://day-42-task-fullstack-demo-backend.onrender.com/api/employees/"+`${empID}`).then((response) => {
@@ -33,8 +41,20 @@ const UpdateEmployees = () => {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const errKeys = Object.keys(employeeDetails).filter((key) => {
+            if (employeeDetails[key] === "" && key !== "id" && key !== "error") {
+              return key;
+            }
+          }); if (errKeys.length >= 1) {
+            alert("Please fill all Data");
+          } else if (
+            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(employeeDetails.email)
+          ) {
+            alert("Please Enter a Valid Email Address");
+          } 
 
-        console.log('Updating employee details...')
+
+        // console.log('Updating employee details...')
         try{
             const response = await axios.put("https://day-42-task-fullstack-demo-backend.onrender.com/api/employees/"+`${empID}`, employeeDetails);
             if(response){

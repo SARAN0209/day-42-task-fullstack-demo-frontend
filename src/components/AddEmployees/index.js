@@ -10,31 +10,35 @@ const AddEmployees = () => {
         email: '',
         address: '',
         designation: '',
-        mobileNumber: ''
-    })
-    // const [email, setemail] = useState("")
-    // const [message, setmessage] = useState("")
-
+        mobileNumber: '',
+        error:{
+            name: '',
+            email: '',
+            address: '',
+            designation: '',
+            mobileNumber: '',
+        },
+    });
+   
     const handleInput = (value) => {
         return setEmployeeDetails(employee => {
             return { ...employee, ...value }
         })
     }
-    // const validation =() =>{
-    //     const valid = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$/
-    //     if (valid.test(email)) {
-    //         setmessage("Email is valid")
-    //     }else if (email===""){
-    //         setmessage("please enter email")
-    //     } else if (!valid.test(email)){
-    //         setmessage("Email is not valid")
-    //     } else {
-    //         setmessage("")
-    //     }
-    // }
+  
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('submitting employee details...')
+        const errKeys = Object.keys(employeeDetails).filter((key) => {
+            if (employeeDetails[key] === "" && key !== "id" && key !== "error") {
+              return key;
+            }
+          }); if (errKeys.length >= 1) {
+            alert("Please fill all Data");
+          } else if (
+            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(employeeDetails.email)
+          ) {
+            alert("Please Enter a Valid Email Address");
+          } 
 
         try {
             const response = await axios.post("https://day-42-task-fullstack-demo-backend.onrender.com/api/employees", employeeDetails);  
@@ -60,23 +64,29 @@ const AddEmployees = () => {
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="name">NAME</label>
-                    <input id="name" className="form-control" name='name' type="text" value={employeeDetails.name} onChange={e => handleInput({ name: e.target.value })} />
+                    <input id="name" className="form-control" name='name' type="text"
+                     value={employeeDetails.name} onChange={e => handleInput({ name: e.target.value })} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="email">EMAIL</label>
-                    <input id="email" className="form-control" name='email' type="email" value={employeeDetails.email} onChange={e => handleInput({ email: e.target.value })} />
+                    <input id="email" className="form-control" name='email' type="email" 
+                    value={employeeDetails.email} onChange={e => handleInput({ email: e.target.value })} />
+                    <span style={{ color: "red" }}>{employeeDetails.error.email}</span>
                 </div>
                 <div className="form-group">
                     <label htmlFor="address">ADDRESS</label>
-                    <input id="address" className="form-control" name='address' type="text" value={employeeDetails.address} onChange={e => handleInput({ address: e.target.value })} />
+                    <input id="address" className="form-control" name='address' type="text" 
+                    value={employeeDetails.address} onChange={e => handleInput({ address: e.target.value })} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="designation">DESIGNATION</label>
-                    <input id="designation" className="form-control" name='designation' type="text" value={employeeDetails.designation} onChange={e => handleInput({ designation: e.target.value })} />
+                    <input id="designation" className="form-control" name='designation' type="text"
+                     value={employeeDetails.designation} onChange={e => handleInput({ designation: e.target.value })} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="mobileNumber">MOBILENUMBER</label>
-                    <input id="mobileNumber" className="form-control" name='mobilenumber' type="number" value={employeeDetails.mobileNumber} onChange={e => handleInput({ mobileNumber: e.target.value })} />
+                    <input id="mobileNumber" className="form-control" name='mobilenumber' type="number"
+                     value={employeeDetails.mobileNumber} onChange={e => handleInput({ mobileNumber: e.target.value })} />
                 </div>
                 
                 <div className="form-group">
