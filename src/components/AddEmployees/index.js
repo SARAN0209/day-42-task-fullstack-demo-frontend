@@ -12,12 +12,26 @@ const AddEmployees = () => {
         designation: '',
         mobileNumber: ''
     })
+    // const [email, setemail] = useState("")
+    // const [message, setmessage] = useState("")
 
     const handleInput = (value) => {
         return setEmployeeDetails(employee => {
             return { ...employee, ...value }
         })
     }
+    // const validation =() =>{
+    //     const valid = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,6}$/
+    //     if (valid.test(email)) {
+    //         setmessage("Email is valid")
+    //     }else if (email===""){
+    //         setmessage("please enter email")
+    //     } else if (!valid.test(email)){
+    //         setmessage("Email is not valid")
+    //     } else {
+    //         setmessage("")
+    //     }
+    // }
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log('submitting employee details...')
@@ -64,6 +78,7 @@ const AddEmployees = () => {
                     <label htmlFor="mobileNumber">MOBILENUMBER</label>
                     <input id="mobileNumber" className="form-control" name='mobilenumber' type="number" value={employeeDetails.mobileNumber} onChange={e => handleInput({ mobileNumber: e.target.value })} />
                 </div>
+                
                 <div className="form-group">
                     <input className='btn btn-primary mt-2' type='submit' value='Create an Employee' />
                 </div>

@@ -59,23 +59,23 @@ const UpdateEmployees = () => {
         <form onSubmit={handleSubmit}>
             <div className="form-group">
                 <label htmlFor="name">NAME</label>
-                <input id="name" className="form-control" type="text" value={employeeDetails.name} onChange={e => handleInput({name: e.target.value})} />
+                <input id="name" className="form-control" name='name' type="text" value={employeeDetails.name} onChange={e => handleInput({name: e.target.value})} />
             </div>
             <div className="form-group">
                 <label htmlFor="email">EMAIL</label>
-                <input id="email" className="form-control" type="text" value={employeeDetails.email} onChange={e => handleInput({email: e.target.value})}/>
+                <input id="email" className="form-control" name='email' type="email" value={employeeDetails.email} onChange={e => handleInput({email: e.target.value})}/>
             </div>
             <div className="form-group">
                 <label htmlFor="address">ADDRESS</label>
-                <input id="address" className="form-control" type="text" value={employeeDetails.address} onChange={e => handleInput({address: e.target.value})}/>
+                <input id="address" className="form-control" name='address' type="text" value={employeeDetails.address} onChange={e => handleInput({address: e.target.value})}/>
             </div>
             <div className="form-group">
                 <label htmlFor="designation">DESIGNATION</label>
-                <input id="designation" className="form-control" type="text" value={employeeDetails.designation}  onChange={e => handleInput({designation: e.target.value})}/>
+                <input id="designation" className="form-control" name='designation' type="text" value={employeeDetails.designation}  onChange={e => handleInput({designation: e.target.value})}/>
             </div>
             <div className="form-group">
                 <label htmlFor="mobilenumber">MOBILENUMBER</label>
-                <input id="mobilenumber" className="form-control" type="text" value={employeeDetails.mobileNumber}  onChange={e => handleInput({mobileNumber: e.target.value})}/>
+                <input id="mobilenumber" className="form-control" name='mobilenumber' type="number" value={employeeDetails.mobileNumber}  onChange={e => handleInput({mobileNumber: e.target.value})}/>
             </div>
             
             <div className="form-group">
